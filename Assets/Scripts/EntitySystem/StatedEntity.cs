@@ -47,6 +47,7 @@ public abstract class StatedEntity : Entity
     /// <inheritdoc />
     public override void _____EntUpdateInternal()
     {
+        _currentState.StateInputUpdate();
         _currentState.StateUpdate();
     }
     
@@ -82,6 +83,23 @@ public abstract class StatedEntity : Entity
         _currentState = States[id];
         
         _currentState.StateEnter();
+    }
+
+    /// <summary>
+    /// Is current state equals to state with specified id?
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public bool CurrentStateIdEquals(int id)
+    {
+        if (id < 0 || id >= States.Length)
+        {
+            Debug.LogError($"[Entity] Wrong state id: {id}");
+            return false;
+        }
+
+
+        return States[id] == _currentState;
     }
 
     #endregion

@@ -24,6 +24,12 @@ public abstract class Entity : MonoBehaviour
     public virtual void _____EntOnSpawnInternal() {}
 
     /// <summary>
+    /// Initialization of entity.
+    /// Should be called before spawn.
+    /// </summary>
+    public abstract void EntInit();
+    
+    /// <summary>
     /// This is currently "Start" unity's method.
     /// But should be handled by main entites script that rule all stuff.
     /// For now i am ignoring master script since entity is only used for Ped.
@@ -66,6 +72,7 @@ public abstract class Entity : MonoBehaviour
     private void Start()
     {
         _____EntOnSpawnInternal();
+        EntInit();
         EntOnSpawn();
     }
 }

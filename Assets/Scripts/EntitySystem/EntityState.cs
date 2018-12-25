@@ -24,6 +24,11 @@ public abstract class EntityState : MonoBehaviour
     public abstract void StateUpdate();
 
     /// <summary>
+    /// Update that run before StateUpdate. Use this method to split input/state update logic. 
+    /// </summary>
+    public abstract void StateInputUpdate();
+    
+    /// <summary>
     /// This method runs when we leave this state.
     /// TODO: this method probably usselss and should be removed.
     /// </summary>
@@ -45,7 +50,7 @@ public abstract class EntityState<T> : EntityState where T : StatedEntity
     /// <summary>
     /// Link to entity object.
     /// </summary>
-    private T _entity;
+    protected T _entity;
 
     #region Overrides of EntityState
 

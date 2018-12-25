@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using SanAndreasUnity.Importing.Animation;
 using UnityEngine;
 
-public class PedIdleState : PedBasicState
+public class PedRunState : PedBasicState
 {
-    #region Overrides of EntityState
+    #region Overrides of PedBasicState
 
     /// <inheritdoc />
     public override void StateEnter()
@@ -17,15 +17,13 @@ public class PedIdleState : PedBasicState
     public override void StateUpdate()
     {
         base.StateUpdate();
-        
-        _entity.PlayerModel.PlayAnim(AnimGroup.WalkCycle, AnimIndex.Idle, PlayMode.StopAll);  
     }
 
     /// <inheritdoc />
     public override void StateInputUpdate()
     {
         base.StateInputUpdate();
-        
+        _entity.PlayerModel.PlayAnim(AnimGroup.WalkCycle, AnimIndex.Run, PlayMode.StopAll);  
     }
 
     /// <inheritdoc />

@@ -111,8 +111,6 @@ namespace SanAndreasUnity.Behaviours
 		private List<FrameAnimData> m_originalFrameDatas = new List<FrameAnimData> ();
 		public List<FrameAnimData> OriginalFrameDatas { get { return m_originalFrameDatas; } }
 
-		private Ped m_ped;
-
 		/// <summary> Velocity of the model extracted from animation. </summary>
 		public Vector3 Velocity { get; private set; }
 
@@ -122,13 +120,6 @@ namespace SanAndreasUnity.Behaviours
 		private Dictionary<AnimationState, List<Transform>> m_mixedTransforms = new Dictionary<AnimationState, List<Transform>>();
 
 		public event System.Action onLateUpdate = delegate {};
-
-
-
-        private void Awake()
-        {
-			m_ped = this.GetComponentInParent<Ped> ();
-        }
 
         private void LateUpdate()
         {
@@ -161,7 +152,10 @@ namespace SanAndreasUnity.Behaviours
                 {
 					loadedModelOnStartup = true;
 
-                    m_ped.OnSpawn();
+					// TODO: heres we load model and told to ped that model is loaded.
+					// Super strange way of doing such thing so it should be reworked!
+					// refactor>
+					//m_ped.OnSpawn();
 
                     // load model on startup
                     //Debug.Log("Loading pedestrian model after startup.");
