@@ -159,7 +159,6 @@ namespace UnityEngine
             var renderers = tx.GetComponentsInChildren<Renderer>();
             foreach (var r in renderers)
             {
-                if (r is ParticleRenderer) continue;
                 if (r is ParticleSystemRenderer) continue;
 
                 if (b.center == Vector3.zero)
