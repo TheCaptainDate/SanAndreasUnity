@@ -49,5 +49,23 @@ public abstract class Entity : MonoBehaviour
     /// Fixed Update
     /// </summary>
     public abstract void EntFixedUpdate();
-    
+
+    // TODO: all staff below should be replaced with EntitesManager
+
+    private void Update()
+    {
+        _____EntUpdateInternal();
+        EntUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        EntFixedUpdate();
+    }
+
+    private void Start()
+    {
+        _____EntOnSpawnInternal();
+        EntOnSpawn();
+    }
 }
